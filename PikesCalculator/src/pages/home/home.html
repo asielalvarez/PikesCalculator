@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Calcular Pike</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Largo</ion-label>
+        <ion-input type="number" step="0.001" [(ngModel)]="measurements.length"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Ancho de Pike</ion-label>
+        <ion-input type="number" [(ngModel)]="measurements.pikeWidth" step="0.001"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Bitola - Espacio entre Pike</ion-label>
+        <ion-input type="number" [(ngModel)]="measurements.bitola" step="0.001"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding class="text-center">
+      <button ion-button  (click)="calculate(measurements)">Calcular</button>
+      <button ion-button color="danger" clear (click)="reset()">Reiniciar</button>
+    </div>
+
+    <ion-card *ngIf="result"> 
+      <ion-card-content>
+      <p>Numero de Pikes: {{result.pike}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="result"> 
+      <ion-card-content>
+         Numero de bitolas: {{result.constantSpace}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="result">  
+      <ion-card-content>
+         Sobrante: {{result.remainingSpace | number}}"
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="result">  
+      <ion-card-content>
+         Empiezar a: {{result.remainingSpace / 2 | number}}" del borde
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>
